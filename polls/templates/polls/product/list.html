@@ -1,0 +1,42 @@
+{% extends "polls/base.html" %}
+
+{% load static %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+{% block content %}
+<h3> Поиск </h3>
+
+<form action="/search" method="GET">
+  {% csrf_token %}
+  <input type="text" id="search" name="search" />
+  <button>Искать</button>
+</form>
+
+
+<ui id="search-results">
+
+</ui>
+
+<div id="sidebar" class="col-sm-3">
+<a href="/">Все товары</a>
+<br>
+{% for cat in categories %}
+  <a href="{{cat.get_absolute_url}}">{{ cat.name }}</a>
+  <br>
+{% endfor %}
+</div>
+<div id="main" class="product_list col-sm-9">
+  {% for product in products %}
+  <div class="product-detail">
+    <div class="col-sm-8">
+    <a href="{{ product.get_absolute_url }}"
+          </a>
+      <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+          {{ product.price }} руб.
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

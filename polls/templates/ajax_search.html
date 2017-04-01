@@ -1,0 +1,12 @@
+{% if articles.count > 0 %}
+
+{% for articles in articles %}
+ <li><a href="/articles/get/"{{product.id}}/">{{product.title}}</a></li> 
+
+{% endfor %}
+
+{% else %}
+
+{% <li>None to Show!</li> %}
+
+{% endif %}
